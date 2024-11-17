@@ -101,40 +101,32 @@ app.get("/cointoss", (req, res) => {
   res.render( 'cointoss', display );
 });
 
-app.get("/janken", (req, res) => {
-  let hand = req.query.hand;
-  let win = Number( req.query.win );
-  let total = Number( req.query.total );
-  console.log( {hand, win, total});
-  const num = Math.floor( Math.random() * 3 + 1 );
-  let cpu = '';
-  if( num==1 ) cpu = 'グー';
-  else if( num==2 ) cpu = 'チョキ';
-  else cpu = 'パー';
+app.get("/uranai", (req, res) => {
+  let value = req.query.number;
+  let result = '';
+  const num1 = Math.floor( Math.random() * 100 + 1 );
+  const num2 = Number( value );  
 
-  let judgement = '';
-  if(hand == cpu){
-    judgement = "引き分け";
-  }
-  else if(
-    (hand == "グー" && cpu == "チョキ") ||
-    (hand == "パー" && cpu == "グー") ||
-    (hand == "チョキ" && cpu == "パー") 
-  ){
-    judgement = "勝ち";
-    win += 1;
+  if(num2 > 100 || num2 < 1){
+    result = "1から100の数字を入れてください"
+  }else if(num2 == num1){
+    result = "今日の運勢は大吉です．"
+  }else if(num1-10 < num2 && num2 < num1+10){
+    result = "今日の運勢は吉です．"
+  }else if(num1-30 < num2 && num2 < num1+30){
+    result = "今日の運勢は小吉です．"
+  }else if(num1-50 < num2 && num2 < num1+50){
+    result = "今日の運勢は末吉です．"
   }else{
-    judgement = "負け";
-  }  
-  total += 1;
-  const display = {
-    your: hand,
-    cpu: cpu,
-    judgement: judgement,
-    win: win,
-    total: total
+    result = "今日の運勢は凶です．"
   }
-  res.render( 'janken', display );
+
+  const display = {
+    cpu: num1,
+    number: num2,
+    result: result
+  }
+  res.render( 'uranai', display );
 });
 
 app.listen(8080, () => console.log("Example app listening on port 8080!"));

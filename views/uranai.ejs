@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>uranai</title>
+</head>
+<body>
+    <p>あなたが選んだ数字は<%= number %>です．</p>
+    <p><%= result %></p>
+    <hr>
+    <body>
+        <form action="/uranai" method="get">
+            <input type="number" name="number" id="number"><br>
+            <input type="submit" value="送信">
+        </form>
+    
+    </body>
+</html>
