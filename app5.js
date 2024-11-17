@@ -65,4 +65,40 @@ app.get("/janken", (req, res) => {
   res.render( 'janken', display );
 });
 
+app.get("/cointoss", (req, res) => {
+  const value = req.query.radio;
+  let win = Number( req.query.win );
+  let total = Number( req.query.total );
+  let hand = '';
+  console.log( {hand, win, total});
+  const num = Math.floor( Math.random() * 2 + 1 );
+  let cpu = '';
+  if( num==1 ) cpu = '表';
+  else if( num==2 ) cpu = '裏';
+
+  if(value == 1){
+    hand = '表';
+  }else if(value == 2){
+    hand = '裏';
+  }
+
+  let judgement = '';
+  if(hand == cpu){ 
+    judgement = "当たり";
+    win += 1;
+  }else{
+    judgement = "ハズレ";
+  }  
+  total += 1;
+  
+  const display = {
+    your: hand,
+    cpu: cpu,
+    judgement: judgement,
+    win: win,
+    total: total
+  }
+  res.render( 'cointoss', display );
+});
+
 app.listen(8080, () => console.log("Example app listening on port 8080!"));

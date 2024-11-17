@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>cointoss</title>
+</head>
+<body>
+    <p>あなたの手は<%= your %>です．</p>
+    <p>コンピュータは<%= cpu %>です．</p>
+    <p>判定：<%= judgement %></p>
+    <p>合計<%= total %>回中，<%= win %>回当たっています．</p>
+    <hr>
+    <form action="/cointoss">
+            <input type="radio" name="radio" id="radio1" value="1">
+            <label for="radio1">表</label><br>
+            <input type="radio" name="radio" id="radio2" value="2">
+            <label for="radio1">裏</label><br>
+            <input type="submit" value="送信">
+            <input type="hidden" name="win" value="<%= win %>">
+            <input type="hidden" name="total" value="<%= total %>">
+    </form>   
+</body>
+</html>

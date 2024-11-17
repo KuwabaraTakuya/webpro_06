@@ -1,0 +1,19 @@
+
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>high&low</title>
+</head>
+<body>
+    コインの表か裏を予測してください．
+    <form action="/cointoss" method="get">
+        <input type="radio" name="radio" id="radio1" value="1">
+        <label for="radio1">表</label><br>
+        <input type="radio" name="radio" id="radio2" value="2">
+        <label for="radio1">裏</label><br>
+        <input type="submit" value="送信">
+        <input type="hidden" name="win" value="0">
+        <input type="hidden" name="total" value="0">
+    </form>
+</body>
+</html>
