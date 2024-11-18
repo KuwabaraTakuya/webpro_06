@@ -70,7 +70,7 @@ app.get("/cointoss", (req, res) => {
   let win = Number( req.query.win );
   let total = Number( req.query.total );
   let hand = '';
-  console.log( {hand, win, total});
+  console.log( {value, win, total});
   const num = Math.floor( Math.random() * 2 + 1 );
   let cpu = '';
   if( num==1 ) cpu = '表';
@@ -104,6 +104,7 @@ app.get("/cointoss", (req, res) => {
 app.get("/uranai", (req, res) => {
   let value = req.query.number;
   let result = '';
+  console.log( {num1,num2});
   const num1 = Math.floor( Math.random() * 100 + 1 );
   const num2 = Number( value );  
 
