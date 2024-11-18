@@ -47,6 +47,16 @@ loose --> count
 count --> end1
 ```
 
+## このプログラムで使用している変数
+変数名 | 説明
+-|-
+value | 受け取った値
+hand | 受け取った値から得た裏表
+win | 当たった回数の記録
+total | 試行回数の記録
+cpu | コイントスの結果
+judgement | 当たっているかの判定
+
 ### このプログラムの使用方法
 1. サーバーを起動する．
 1. Webブラウザでlocalhost:8080/public/cointoss.htmlにアクセスする
@@ -107,6 +117,14 @@ win --> end1
 if -->|no| loose
 loose --> end1
 ```
+
+## このプログラムで使用している変数
+変数名 | 説明
+-|-
+num1 | ランダムに得られた1から100の数字
+num2 | 受け取った値
+result | 占いの結果
+
 ### プログラムの使用方法
 1. ```node app5.js ```でプログラムを起動する
 1. Webブラウザでlocalhost:8080/public/janken.htmlにアクセスする
