@@ -99,10 +99,32 @@ app.post("/read", (req, res) => {
 app.post("/post", (req, res) => {
   const name = req.body.name;
   const message = req.body.message;
-  console.log( [name, message] );
+  const id = bbs.length;
+  console.log([name, message]);
   // 本来はここでDBMSに保存する
-  bbs.push( { name: name, message: message } );
+  bbs.push( { id: id, name: name, message: message } );
   res.json( {number: bbs.length } );
+});
+
+app.post("/search", (req, res) => {
+  const keyword = req.body.keyword;
+  const results = bbs.filter(post => post.message.includes(keyword)); 
+  res.json({ results });
+});
+
+app.post("/edit/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const newMessage = req.body.message;
+  const post = bbs.find((bbs) => bbs.id === id);
+  post.message = newMessage;  
+  res.json({ number: bbs.length });
+});
+
+app.post("/delete/:id", (req, res) => {
+  const id = Number(req.params.id);
+  const post = bbs.find((bbs) => bbs.id === id);
+  bbs.splice(post, 1);  
+  res.json({ number: bbs.length });
 });
 
 app.listen(8080, () => console.log("Example app listening on port 8080!"));

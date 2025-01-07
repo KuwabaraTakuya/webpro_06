@@ -1,4 +1,3 @@
-
 ```mermaid
 sequenceDiagram
   autonumber
@@ -11,4 +10,10 @@ sequenceDiagram
   BBSサーバ ->> BBSクライアント:掲示データ
   BBSクライアント ->> BBSサーバ:Check(新規チェック)
   BBSサーバ ->> BBSクライアント:全書き込み数
+  BBSクライアント ->> BBSサーバ:edit(編集)
+  BBSサーバ ->> BBSクライアント:全書き込み数
+  BBSクライアント ->> BBSサーバ:delete(削除)
+  BBSサーバ ->> BBSクライアント:全書き込み数
+  BBSクライアント ->> BBSサーバ:search(検索)
+  BBSサーバ ->> BBSクライアント:当てはまる掲示板データ
 ```
